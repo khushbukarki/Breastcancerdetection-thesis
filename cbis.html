@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jupyter Notebook — generated with runcell</title>
+    <meta name="description" content="Exported with runcell — convert .ipynb notebooks to HTML or PDF anytime at runcell.dev." />
+    <meta name="generator" content="runcell" />
+    <style>
+        :root {
+            --jp-code-font-family: 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono', monospace;
+            --jp-content-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            --jp-cell-prompt-width: 64px;
+            --jp-input-prompt-color: #307fc1;
+            --jp-output-prompt-color: #bf5b3d;
+            --jp-cell-input-bg: #f7f7f7;
+            --jp-layout-color0: #ffffff;
+            --jp-layout-color1: #f7f7f7;
+            --jp-border-color1: #e0e0e0;
+            --jp-content-font-color0: #000000;
+            --jp-content-font-color1: #333333;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--jp-content-font-family);
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--jp-content-font-color0);
+            background-color: var(--jp-layout-color0);
+            margin: 0;
+            padding: 0;
+        }
+
+        .notebook-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Cell structure */
+        .cell {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .cell-prompt {
+            min-width: var(--jp-cell-prompt-width);
+            width: var(--jp-cell-prompt-width);
+            font-family: var(--jp-code-font-family);
+            font-size: 12px;
+            padding: 10px 8px 10px 0;
+            text-align: right;
+            flex-shrink: 0;
+            user-select: none;
+        }
+
+        .cell-content {
+            flex: 1;
+            min-width: 0;
+            overflow: hidden;
+        }
+
+        /* Input prompt styling - Jupyter blue */
+        .input-prompt {
+            color: var(--jp-input-prompt-color);
+            font-weight: bold;
+        }
+
+        /* Output prompt styling - Jupyter red/orange */
+        .output-prompt {
+            color: var(--jp-output-prompt-color);
+            font-weight: bold;
+        }
+
+        /* Code cell input area */
+        .input-area {
+            background-color: var(--jp-cell-input-bg);
+            border: 1px solid var(--jp-border-color1);
+            border-radius: 2px;
+            padding: 8px 12px;
+            overflow-x: auto;
+        }
+
+        .input-area pre {
+            margin: 0;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            line-height: 1.4;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* Output area */
+        .output-area {
+            margin-top: 0;
+        }
+
+        .output-wrapper {
+            display: flex;
+            flex-direction: row;
+            margin-top: 4px;
+        }
+
+        .output-content {
+            flex: 1;
+            min-width: 0;
+            padding: 8px 0;
+        }
+
+        .output-content pre {
+            margin: 0;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            line-height: 1.4;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* Stream output (stdout/stderr) */
+        .output-stream {
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            line-height: 1.4;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .output-stderr {
+            background-color: #fdd;
+            padding: 8px 12px;
+            border-radius: 2px;
+        }
+
+        /* Execute result / display data */
+        .output-result {
+            padding: 4px 0;
+        }
+
+        .output-result pre {
+            margin: 0;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+        }
+
+        /* Image output */
+        .output-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* HTML output (DataFrames, etc.) */
+        .output-html {
+            overflow-x: auto;
+        }
+
+        .output-html table {
+            border-collapse: collapse;
+            font-size: 13px;
+            font-family: var(--jp-content-font-family);
+        }
+
+        .output-html table th,
+        .output-html table td {
+            border: 1px solid #ddd;
+            padding: 6px 10px;
+            text-align: left;
+        }
+
+        .output-html table th {
+            background-color: #f5f5f5;
+            font-weight: 600;
+        }
+
+        .output-html table tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+
+        /* Error output */
+        .output-error {
+            background-color: #fff0f0;
+            padding: 8px 12px;
+            border-radius: 2px;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            white-space: pre-wrap;
+        }
+
+        /* Markdown cell styling */
+        .markdown-cell {
+            padding: 10px 0;
+        }
+
+        .markdown-cell h1 {
+            font-size: 2em;
+            font-weight: 600;
+            margin: 0.67em 0;
+            padding-bottom: 0.3em;
+            border-bottom: 1px solid var(--jp-border-color1);
+        }
+
+        .markdown-cell h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            margin: 0.83em 0;
+            padding-bottom: 0.3em;
+            border-bottom: 1px solid var(--jp-border-color1);
+        }
+
+        .markdown-cell h3 {
+            font-size: 1.25em;
+            font-weight: 600;
+            margin: 1em 0;
+        }
+
+        .markdown-cell h4 {
+            font-size: 1em;
+            font-weight: 600;
+            margin: 1.33em 0;
+        }
+
+        .markdown-cell h5 {
+            font-size: 0.875em;
+            font-weight: 600;
+            margin: 1.67em 0;
+        }
+
+        .markdown-cell h6 {
+            font-size: 0.85em;
+            font-weight: 600;
+            margin: 2.33em 0;
+            color: #6a737d;
+        }
+
+        .markdown-cell p {
+            margin: 0 0 16px 0;
+            line-height: 1.6;
+        }
+
+        .markdown-cell code {
+            font-family: var(--jp-code-font-family);
+            font-size: 85%;
+            background-color: rgba(27, 31, 35, 0.05);
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+        }
+
+        .markdown-cell pre {
+            background-color: var(--jp-cell-input-bg);
+            border: 1px solid var(--jp-border-color1);
+            border-radius: 3px;
+            padding: 16px;
+            overflow-x: auto;
+            font-size: 85%;
+            line-height: 1.45;
+        }
+
+        .markdown-cell pre code {
+            background-color: transparent;
+            padding: 0;
+            border-radius: 0;
+            font-size: 100%;
+        }
+
+        .markdown-cell blockquote {
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+            color: #6a737d;
+            border-left: 4px solid #dfe2e5;
+        }
+
+        .markdown-cell ul,
+        .markdown-cell ol {
+            margin: 0 0 16px 0;
+            padding-left: 2em;
+        }
+
+        .markdown-cell li {
+            margin: 0.25em 0;
+        }
+
+        .markdown-cell a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+
+        .markdown-cell a:hover {
+            text-decoration: underline;
+        }
+
+        .markdown-cell hr {
+            border: 0;
+            border-top: 1px solid var(--jp-border-color1);
+            margin: 24px 0;
+        }
+
+        .markdown-cell img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .markdown-cell table {
+            border-collapse: collapse;
+            margin: 0 0 16px 0;
+        }
+
+        .markdown-cell table th,
+        .markdown-cell table td {
+            border: 1px solid #dfe2e5;
+            padding: 6px 13px;
+        }
+
+        .markdown-cell table th {
+            font-weight: 600;
+            background-color: #f6f8fa;
+        }
+
+        .markdown-cell table tr:nth-child(2n) {
+            background-color: #f6f8fa;
+        }
+
+        /* Raw cell styling */
+        .raw-cell {
+            background-color: var(--jp-layout-color1);
+            border: 1px solid var(--jp-border-color1);
+            border-radius: 2px;
+            padding: 8px 12px;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            white-space: pre-wrap;
+        }
+
+        /* Empty prompt placeholder */
+        .prompt-empty {
+            color: transparent;
+        }
+
+        .export-footer {
+            margin-top: 32px;
+            padding-top: 16px;
+            border-top: 1px solid var(--jp-border-color1);
+            color: #555;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .export-footer a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+
+        .export-footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="notebook-container">
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [26]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>import os
+from pathlib import Path
+
+import numpy as np
+import pandas as pd
+from PIL import Image
+
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+from torch.utils.data import Dataset, DataLoader
+from torchvision import transforms
+
+from sklearn.model_selection import GroupShuffleSplit
+from sklearn.metrics import (
+    accuracy_score, precision_score, recall_score, f1_score,
+    roc_auc_score, confusion_matrix, roc_curve
+)
+
+import matplotlib.pyplot as plt
+
+import timm
+import open_clip
+
+import shap
+from lime import lime_image
+from skimage.segmentation import mark_boundaries
+
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+print("Using device:", device)
+
+ROOT      = Path(r"C:\Users\khush\OneDrive\Desktop\thesisnew")
+CBIS_ROOT = ROOT / "dataset" / "cbis"
+CSV_ROOT  = CBIS_ROOT / "csv"
+PNG_ROOT  = CBIS_ROOT / "png"
+JPEG_ROOT = CBIS_ROOT / "jpeg"
+</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Using device: cuda
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [28]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>from pathlib import Path
+import os
+import pandas as pd
+
+# ---- ROOTS (adapt if needed) ----
+ROOT      = Path(r"C:\Users\khush\OneDrive\Desktop\thesisnew")
+CBIS_ROOT = ROOT / "dataset" / "cbis"
+CSV_ROOT  = CBIS_ROOT / "csv"
+PNG_ROOT  = CBIS_ROOT / "png"
+
+print("CBIS_ROOT:", CBIS_ROOT)
+print("CSV_ROOT :", CSV_ROOT)
+print("PNG_ROOT :", PNG_ROOT)
+
+# 1) LOAD RAW CBIS CSVs (mass + calc, train + test)
+mass_train = pd.read_csv(CSV_ROOT / "mass_case_description_train_set.csv")
+mass_test  = pd.read_csv(CSV_ROOT / "mass_case_description_test_set.csv")
+calc_train = pd.read_csv(CSV_ROOT / "calc_case_description_train_set.csv")
+calc_test  = pd.read_csv(CSV_ROOT / "calc_case_description_test_set.csv")
+
+mass_df = pd.concat([mass_train, mass_test], ignore_index=True)
+calc_df = pd.concat([calc_train, calc_test], ignore_index=True)
+
+mass_df["lesion_type"] = "mass"
+calc_df["lesion_type"] = "calc"
+
+raw = pd.concat([mass_df, calc_df], ignore_index=True)
+print("Raw rows (before pathology clean):", len(raw))
+
+# 2) CLEAN PATHOLOGY → LABEL (0/1)
+raw["pathology"] = raw["pathology"].str.upper().str.strip()
+raw["label"] = raw["pathology"].map({"MALIGNANT": 1, "BENIGN": 0})
+raw = raw.dropna(subset=["label"]).reset_index(drop=True)
+raw["label"] = raw["label"].astype(int)
+print("Rows after dropping unknown pathology:", len(raw))
+
+# 3) COLLECT ALL PNG FILES AND SORT
+png_files = [f for f in os.listdir(PNG_ROOT) if f.lower().endswith(".png")]
+png_files = sorted(png_files)   # e.g. ["1-000.png", "1-001.png", ...]
+print("Number of PNG files:", len(png_files))
+
+# 4) ALIGN RAW ROWS WITH PNGS BY ORDER
+n_raw = len(raw)
+n_png = len(png_files)
+n = min(n_raw, n_png)
+
+if n_raw != n_png:
+    print(f"⚠️ MISMATCH: {n_raw} rows in CSVs vs {n_png} PNG files")
+    print(f"   Using first {n} of each so they align by order.")
+
+raw = raw.iloc[:n].reset_index(drop=True)
+png_files = png_files[:n]
+
+raw["image_png"] = [str(PNG_ROOT / f) for f in png_files]
+
+# OPTIONAL: create an image_id for convenience
+raw["image_id"] = range(n)  # 0,1,2,...
+
+# 5) BUILD FINAL METADATA TABLE
+meta = raw[[
+    "image_id",
+    "patient_id",
+    "lesion_type",
+    "pathology",
+    "label",
+    "image file path",   # original CBIS relative path
+    "image_png",         # full PNG path we just made
+]].copy()
+
+meta = meta.rename(columns={
+    "image file path": "image_raw"
+})
+
+print("\nGenerated metadata preview:")
+print(meta.head())
+print("Total images in metadata:", len(meta))
+
+# 6) SAVE
+META_CSV = CBIS_ROOT / "cbis_metadata.csv"
+meta.to_csv(META_CSV, index=False)
+print("\nSaved →", META_CSV)
+</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">CBIS_ROOT: C:\Users\khush\OneDrive\Desktop\thesisnew\dataset\cbis
+CSV_ROOT : C:\Users\khush\OneDrive\Desktop\thesisnew\dataset\cbis\csv
+PNG_ROOT : C:\Users\khush\OneDrive\Desktop\thesisnew\dataset\cbis\png
+Raw rows (before pathology clean): 3568
+Rows after dropping unknown pathology: 2886
+Number of PNG files: 600
+⚠️ MISMATCH: 2886 rows in CSVs vs 600 PNG files
+   Using first 600 of each so they align by order.
+
+Generated metadata preview:
+   image_id patient_id lesion_type  pathology  label  \
+0         0    P_00001        mass  MALIGNANT      1   
+1         1    P_00001        mass  MALIGNANT      1   
+2         2    P_00004        mass     BENIGN      0   
+3         3    P_00004        mass     BENIGN      0   
+4         4    P_00004        mass     BENIGN      0   
+
+                                           image_raw  \
+0  Mass-Training_P_00001_LEFT_CC/1.3.6.1.4.1.9590...   
+1  Mass-Training_P_00001_LEFT_MLO/1.3.6.1.4.1.959...   
+2  Mass-Training_P_00004_LEFT_CC/1.3.6.1.4.1.9590...   
+3  Mass-Training_P_00004_LEFT_MLO/1.3.6.1.4.1.959...   
+4  Mass-Training_P_00004_RIGHT_MLO/1.3.6.1.4.1.95...   
+
+                                           image_png  
+0  C:\Users\khush\OneDrive\Desktop\thesisnew\data...  
+1  C:\Users\khush\OneDrive\Desktop\thesisnew\data...  
+2  C:\Users\khush\OneDrive\Desktop\thesisnew\data...  
+3  C:\Users\khush\OneDrive\Desktop\thesisnew\data...  
+4  C:\Users\khush\OneDrive\Desktop\thesisnew\data...  
+Total images in metadata: 600
+
+Saved → C:\Users\khush\OneDrive\Desktop\thesisnew\dataset\cbis\cbis_metadata.csv
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [29]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>df = pd.read_csv(META_CSV)
+print(df.head())
+print(len(df))
+</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">   image_id patient_id lesion_type  pathology  label  \
+0         0    P_00001        mass  MALIGNANT      1   
+1         1    P_00001        mass  MALIGNANT      1   
+2         2    P_00004        mass     BENIGN      0   
+3         3    P_00004        mass     BENIGN      0   
+4         4    P_00004        mass     BENIGN      0   
+
+                                           image_raw  \
+0  Mass-Training_P_00001_LEFT_CC/1.3.6.1.4.1.9590...   
+1  Mass-Training_P_00001_LEFT_MLO/1.3.6.1.4.1.959...   
+2  Mass-Training_P_00004_LEFT_CC/1.3.6.1.4.1.9590...   
+3  Mass-Training_P_00004_LEFT_MLO/1.3.6.1.4.1.959...   
+4  Mass-Training_P_00004_RIGHT_MLO/1.3.6.1.4.1.95...   
+
+                                           image_png  
+0  C:\Users\khush\OneDrive\Desktop\thesisnew\data...  
+1  C:\Users\khush\OneDrive\Desktop\thesisnew\data...  
+2  C:\Users\khush\OneDrive\Desktop\thesisnew\data...  
+3  C:\Users\khush\OneDrive\Desktop\thesisnew\data...  
+4  C:\Users\khush\OneDrive\Desktop\thesisnew\data...  
+600
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [30]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>import pandas as pd
+
+META_CSV = r"C:\Users\khush\OneDrive\Desktop\thesisnew\dataset\cbis\cbis_metadata.csv"
+df = pd.read_csv(META_CSV)
+
+print("Metadata loaded:", df.shape)
+df.head()
+</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Metadata loaded: (600, 7)
+</div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt">Out[30]:</div>
+                        <div class="output-content">
+                            <div class="output-html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>image_id</th>
+      <th>patient_id</th>
+      <th>lesion_type</th>
+      <th>pathology</th>
+      <th>label</th>
+      <th>image_raw</th>
+      <th>image_png</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>P_00001</td>
+      <td>mass</td>
+      <td>MALIGNANT</td>
+      <td>1</td>
+      <td>Mass-Training_P_00001_LEFT_CC/1.3.6.1.4.1.9590...</td>
+      <td>C:\Users\khush\OneDrive\Desktop\thesisnew\data...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>P_00001</td>
+      <td>mass</td>
+      <td>MALIGNANT</td>
+      <td>1</td>
+      <td>Mass-Training_P_00001_LEFT_MLO/1.3.6.1.4.1.959...</td>
+      <td>C:\Users\khush\OneDrive\Desktop\thesisnew\data...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>P_00004</td>
+      <td>mass</td>
+      <td>BENIGN</td>
+      <td>0</td>
+      <td>Mass-Training_P_00004_LEFT_CC/1.3.6.1.4.1.9590...</td>
+      <td>C:\Users\khush\OneDrive\Desktop\thesisnew\data...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>P_00004</td>
+      <td>mass</td>
+      <td>BENIGN</td>
+      <td>0</td>
+      <td>Mass-Training_P_00004_LEFT_MLO/1.3.6.1.4.1.959...</td>
+      <td>C:\Users\khush\OneDrive\Desktop\thesisnew\data...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>P_00004</td>
+      <td>mass</td>
+      <td>BENIGN</td>
+      <td>0</td>
+      <td>Mass-Training_P_00004_RIGHT_MLO/1.3.6.1.4.1.95...</td>
+      <td>C:\Users\khush\OneDrive\Desktop\thesisnew\data...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [31]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>from sklearn.model_selection import GroupShuffleSplit
+
+groups = df["patient_id"]
+
+splitter = GroupShuffleSplit(test_size=0.2, n_splits=1, random_state=42)
+train_idx, test_idx = next(splitter.split(df, groups=groups))
+
+train_df = df.iloc[train_idx].reset_index(drop=True)
+test_df  = df.iloc[test_idx].reset_index(drop=True)
+
+# Now split train into train/val
+groups_train = train_df["patient_id"]
+splitter2 = GroupShuffleSplit(test_size=0.2, n_splits=1, random_state=42)
+train_idx2, val_idx = next(splitter2.split(train_df, groups=groups_train))
+
+train_df2 = train_df.iloc[train_idx2].reset_index(drop=True)
+val_df    = train_df.iloc[val_idx].reset_index(drop=True)
+
+print("Train:", len(train_df2))
+print("Val:", len(val_df))
+print("Test:", len(test_df))
+</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Train: 381
+Val: 97
+Test: 122
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [32]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>from torch.utils.data import Dataset
+from PIL import Image
+from pathlib import Path
+import torch
+
+class CBISDataset(Dataset):
+    def __init__(self, df, transform=None):
+        df = df.reset_index(drop=True)
+        df["image_png"] = df["image_png"].astype(str)
+
+        # drop missing images (should be zero now)
+        mask = df["image_png"].apply(lambda p: Path(p).is_file())
+        print(f"Dataset: keeping {mask.sum()} / {len(df)} images")
+
+        self.df = df[mask].reset_index(drop=True)
+        self.transform = transform
+
+    def __len__(self):
+        return len(self.df)
+
+    def __getitem__(self, idx):
+        row = self.df.iloc[idx]
+        img = Image.open(row["image_png"]).convert("RGB")
+        label = int(row["label"])
+
+        if self.transform:
+            img = self.transform(img)
+
+        return img, label
+</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [33]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>from torchvision import transforms
+from torch.utils.data import DataLoader
+
+train_transform = transforms.Compose([
+    transforms.Resize((224,224)),
+    transforms.RandomHorizontalFlip(0.5),
+    transforms.RandomRotation(10),
+    transforms.ToTensor(),
+    transforms.Normalize([0.485,0.456,0.406],
+                         [0.229,0.224,0.225])
+])
+
+test_transform = transforms.Compose([
+    transforms.Resize((224,224)),
+    transforms.ToTensor(),
+    transforms.Normalize([0.485,0.456,0.406],
+                         [0.229,0.224,0.225])
+])
+
+train_ds = CBISDataset(train_df2, transform=train_transform)
+val_ds   = CBISDataset(val_df,    transform=test_transform)
+test_ds  = CBISDataset(test_df,   transform=test_transform)
+
+train_loader = DataLoader(train_ds, batch_size=16, shuffle=True)
+val_loader   = DataLoader(val_ds, batch_size=16, shuffle=False)
+test_loader  = DataLoader(test_ds, batch_size=16, shuffle=False)
+</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Dataset: keeping 381 / 381 images
+Dataset: keeping 97 / 97 images
+Dataset: keeping 122 / 122 images
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [34]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>def train_one_epoch(model, loader, optimizer, criterion, device):
+    model.train()
+    running_loss = 0
+    preds_all, labels_all = [], []
+
+    for imgs, labels in loader:
+        imgs, labels = imgs.to(device), labels.to(device)
+
+        optimizer.zero_grad()
+        logits = model(imgs)
+        loss = criterion(logits, labels)
+        loss.backward()
+        optimizer.step()
+
+        running_loss += loss.item() * imgs.size(0)
+        preds_all.append(logits.argmax(1).cpu())
+        labels_all.append(labels.cpu())
+
+    preds_all = torch.cat(preds_all)
+    labels_all = torch.cat(labels_all)
+
+    acc = accuracy_score(labels_all, preds_all)
+    loss = running_loss / len(loader.dataset)
+    return loss, acc
+</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [35]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>def evaluate(model, loader, criterion, device):
+    model.eval()
+    preds_all, probs_all, labels_all = [], [], []
+    running_loss = 0
+
+    with torch.no_grad():
+        for imgs, labels in loader:
+            imgs, labels = imgs.to(device), labels.to(device)
+            logits = model(imgs)
+            loss = criterion(logits, labels)
+            running_loss += loss.item() * imgs.size(0)
+
+            probs = F.softmax(logits, dim=1)[:,1].cpu()
+            preds = logits.argmax(1).cpu()
+            labels_cpu = labels.cpu()
+
+            preds_all.append(preds)
+            probs_all.append(probs)
+            labels_all.append(labels_cpu)
+
+    preds_all = torch.cat(preds_all)
+    probs_all = torch.cat(probs_all)
+    labels_all = torch.cat(labels_all)
+
+    acc  = accuracy_score(labels_all, preds_all)
+    prec = precision_score(labels_all, preds_all)
+    rec  = recall_score(labels_all, preds_all)
+    f1   = f1_score(labels_all, preds_all)
+    auc  = roc_auc_score(labels_all, probs_all)
+
+    loss = running_loss / len(loader.dataset)
+
+    return loss, acc, prec, rec, f1, auc
+</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [36]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>df = meta.copy()
+
+groups = df["patient_id"]
+y = df["label"]
+
+# Train+Val vs Test
+gss1 = GroupShuffleSplit(n_splits=1, test_size=0.15, random_state=42)
+trainval_idx, test_idx = next(gss1.split(df, y, groups))
+
+trainval_df = df.iloc[trainval_idx].reset_index(drop=True)
+test_df     = df.iloc[test_idx].reset_index(drop=True)
+
+# Train vs Val
+groups_tv = trainval_df["patient_id"]
+y_tv = trainval_df["label"]
+
+gss2 = GroupShuffleSplit(n_splits=1, test_size=0.15, random_state=42)
+train_idx, val_idx = next(gss2.split(trainval_df, y_tv, groups_tv))
+
+train_df2 = trainval_df.iloc[train_idx].reset_index(drop=True)
+val_df    = trainval_df.iloc[val_idx].reset_index(drop=True)
+
+def check_overlap(a, b, na, nb):
+    A = set(a["patient_id"])
+    B = set(b["patient_id"])
+    print(f"{na} vs {nb} overlap:", len(A&amp;B))
+
+check_overlap(train_df2, val_df,  "train", "val")
+check_overlap(train_df2, test_df, "train", "test")
+check_overlap(val_df,   test_df,  "val",   "test")
+</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">train vs val overlap: 0
+train vs test overlap: 0
+val vs test overlap: 0
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [37]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>train_transform = transforms.Compose([
+    transforms.Resize((224,224)),
+    transforms.RandomHorizontalFlip(),
+    transforms.RandomRotation(10),
+    transforms.ToTensor(),
+    transforms.Normalize([0.485,0.456,0.406],[0.229,0.224,0.225])
+])
+
+test_transform = transforms.Compose([
+    transforms.Resize((224,224)),
+    transforms.ToTensor(),
+    transforms.Normalize([0.485,0.456,0.406],[0.229,0.224,0.225])
+])
+
+class CBISDataset(Dataset):
+    def __init__(self, df, transform=None):
+        self.df = df.reset_index(drop=True)
+        self.transform = transform
+
+    def __getitem__(self, idx):
+        row = self.df.iloc[idx]
+        img = Image.open(row["image_png"]).convert("RGB")
+        label = int(row["label"])
+        if self.transform:
+            img = self.transform(img)
+        return img, label, row["image_png"]
+
+    def __len__(self):
+        return len(self.df)
+
+train_ds = CBISDataset(train_df2, transform=train_transform)
+val_ds   = CBISDataset(val_df,    transform=test_transform)
+test_ds  = CBISDataset(test_df,   transform=test_transform)
+
+train_loader = DataLoader(train_ds, batch_size=16, shuffle=True)
+val_loader   = DataLoader(val_ds,   batch_size=16, shuffle=False)
+test_loader  = DataLoader(test_ds,  batch_size=16, shuffle=False)
+</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [38]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>class HybridNet(nn.Module):
+    def __init__(self):
+        super().__init__()
+
+        self.cnn = timm.create_model("resnet50", pretrained=True, num_classes=0)
+        cnn_dim = self.cnn.num_features
+
+        self.vit = timm.create_model("vit_base_patch16_224", pretrained=True, num_classes=0)
+        vit_dim = self.vit.num_features
+
+        self.clip_model, _, _ = open_clip.create_model_and_transforms("ViT-B-32", pretrained="openai")
+        self.clip_visual = self.clip_model.visual
+        clip_dim = self.clip_visual.output_dim
+
+        for p in self.clip_model.transformer.parameters():
+            p.requires_grad = False
+
+        total_dim = cnn_dim + vit_dim + clip_dim
+
+        self.classifier = nn.Sequential(
+            nn.Linear(total_dim, 512),
+            nn.ReLU(),
+            nn.Dropout(0.4),
+            nn.Linear(512,2)
+        )
+
+        # Freeze backbones for stability
+        for m in [self.cnn, self.vit, self.clip_visual]:
+            for p in m.parameters():
+                p.requires_grad = False
+
+    def forward(self, x):
+        f_cnn = self.cnn(x)
+        f_vit = self.vit(x)
+
+        # convert ImageNet norm → CLIP norm
+        mean_im = torch.tensor([0.485,0.456,0.406], device=x.device).reshape(1,3,1,1)
+        std_im  = torch.tensor([0.229,0.224,0.225], device=x.device).reshape(1,3,1,1)
+        x_clip = (x * std_im + mean_im)
+
+        clip_mean = torch.tensor([0.48145466,0.4578275,0.40821073], device=x.device).reshape(1,3,1,1)
+        clip_std  = torch.tensor([0.26862954,0.26130258,0.27577711], device=x.device).reshape(1,3,1,1)
+        x_clip = (x_clip - clip_mean) / clip_std
+
+        f_clip = self.clip_visual(x_clip)
+
+        feats = torch.cat([f_cnn, f_vit, f_clip], dim=1)
+        return self.classifier(feats)
+
+model = HybridNet().to(device)
+</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream output-stderr">c:\Users\khush\OneDrive\Desktop\thesisnew\.venv\lib\site-packages\open_clip\factory.py:450: UserWarning: QuickGELU mismatch between final model config (quick_gelu=False) and pretrained tag 'openai' (quick_gelu=True).
+  warnings.warn(
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [39]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>criterion = nn.CrossEntropyLoss()
+optimizer = torch.optim.Adam(model.classifier.parameters(), lr=1e-4)
+
+def train_one_epoch():
+    model.train()
+    tot_loss = 0
+    preds_all = []
+    labels_all = []
+    for imgs, labels, _ in train_loader:
+        imgs, labels = imgs.to(device), labels.to(device)
+        optimizer.zero_grad()
+        out = model(imgs)
+        loss = criterion(out, labels)
+        loss.backward()
+        optimizer.step()
+        tot_loss += loss.item()*imgs.size(0)
+        preds_all.append(out.argmax(1).cpu())
+        labels_all.append(labels.cpu())
+    preds_all = torch.cat(preds_all)
+    labels_all = torch.cat(labels_all)
+    acc = accuracy_score(labels_all, preds_all)
+    return tot_loss/len(train_ds), acc
+
+@torch.no_grad()
+def evaluate(loader):
+    model.eval()
+    tot_loss = 0
+    preds_all = []
+    labels_all = []
+    probs_all = []
+    for imgs, labels, _ in loader:
+        imgs, labels = imgs.to(device), labels.to(device)
+        out = model(imgs)
+        loss = criterion(out, labels)
+        tot_loss += loss.item()*imgs.size(0)
+        probs = F.softmax(out, dim=1)[:,1]
+        preds = out.argmax(1)
+        preds_all.append(preds.cpu())
+        labels_all.append(labels.cpu())
+        probs_all.append(probs.cpu())
+    preds_all = torch.cat(preds_all)
+    labels_all = torch.cat(labels_all)
+    probs_all = torch.cat(probs_all)
+    return (
+        tot_loss/len(loader.dataset),
+        accuracy_score(labels_all,preds_all),
+        precision_score(labels_all,preds_all),
+        recall_score(labels_all,preds_all),
+        f1_score(labels_all,preds_all),
+        roc_auc_score(labels_all,probs_all)
+    )
+
+for epoch in range(1,11):
+    tr_loss, tr_acc = train_one_epoch()
+    va_loss, va_acc, va_prec, va_rec, va_f1, va_auc = evaluate(val_loader)
+    print(f"Epoch {epoch}: Train loss {tr_loss:.4f} acc {tr_acc:.4f} | Val F1 {va_f1:.4f} AUC {va_auc:.4f}")
+</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Epoch 1: Train loss 0.7259 acc 0.5060 | Val F1 0.5684 AUC 0.5294
+Epoch 2: Train loss 0.7069 acc 0.5227 | Val F1 0.5913 AUC 0.5251
+Epoch 3: Train loss 0.6951 acc 0.5107 | Val F1 0.6038 AUC 0.5192
+Epoch 4: Train loss 0.6974 acc 0.5418 | Val F1 0.6325 AUC 0.5310
+Epoch 5: Train loss 0.7007 acc 0.5418 | Val F1 0.5361 AUC 0.5208
+Epoch 6: Train loss 0.6715 acc 0.5632 | Val F1 0.5818 AUC 0.5214
+Epoch 7: Train loss 0.6931 acc 0.5251 | Val F1 0.6038 AUC 0.5497
+Epoch 8: Train loss 0.6846 acc 0.5418 | Val F1 0.6042 AUC 0.5577
+Epoch 9: Train loss 0.6967 acc 0.5418 | Val F1 0.5532 AUC 0.5529
+Epoch 10: Train loss 0.6716 acc 0.5967 | Val F1 0.5128 AUC 0.5529
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [40]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>te_loss, te_acc, te_prec, te_rec, te_f1, te_auc = evaluate(test_loader)
+
+print("\n=== TEST RESULTS ===")
+print("Accuracy:", te_acc)
+print("Precision:", te_prec)
+print("Recall:", te_rec)
+print("F1:", te_f1)
+print("AUC:", te_auc)
+</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">
+=== TEST RESULTS ===
+Accuracy: 0.46808510638297873
+Precision: 0.4772727272727273
+Recall: 0.4375
+F1: 0.45652173913043476
+AUC: 0.4909420289855072
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre></pre></div>
+            </div>
+        </div>
+    </div>
+    <footer class="export-footer">
+        Exported with <a href="https://www.runcell.dev/tool/ipynb-to-html">runcell</a> — convert notebooks to HTML or PDF anytime at runcell.dev.
+    </footer>
+</body>
+</html>

@@ -1,0 +1,1990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jupyter Notebook — generated with runcell</title>
+    <meta name="description" content="Exported with runcell — convert .ipynb notebooks to HTML or PDF anytime at runcell.dev." />
+    <meta name="generator" content="runcell" />
+    <style>
+        :root {
+            --jp-code-font-family: 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono', monospace;
+            --jp-content-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            --jp-cell-prompt-width: 64px;
+            --jp-input-prompt-color: #307fc1;
+            --jp-output-prompt-color: #bf5b3d;
+            --jp-cell-input-bg: #f7f7f7;
+            --jp-layout-color0: #ffffff;
+            --jp-layout-color1: #f7f7f7;
+            --jp-border-color1: #e0e0e0;
+            --jp-content-font-color0: #000000;
+            --jp-content-font-color1: #333333;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--jp-content-font-family);
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--jp-content-font-color0);
+            background-color: var(--jp-layout-color0);
+            margin: 0;
+            padding: 0;
+        }
+
+        .notebook-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Cell structure */
+        .cell {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .cell-prompt {
+            min-width: var(--jp-cell-prompt-width);
+            width: var(--jp-cell-prompt-width);
+            font-family: var(--jp-code-font-family);
+            font-size: 12px;
+            padding: 10px 8px 10px 0;
+            text-align: right;
+            flex-shrink: 0;
+            user-select: none;
+        }
+
+        .cell-content {
+            flex: 1;
+            min-width: 0;
+            overflow: hidden;
+        }
+
+        /* Input prompt styling - Jupyter blue */
+        .input-prompt {
+            color: var(--jp-input-prompt-color);
+            font-weight: bold;
+        }
+
+        /* Output prompt styling - Jupyter red/orange */
+        .output-prompt {
+            color: var(--jp-output-prompt-color);
+            font-weight: bold;
+        }
+
+        /* Code cell input area */
+        .input-area {
+            background-color: var(--jp-cell-input-bg);
+            border: 1px solid var(--jp-border-color1);
+            border-radius: 2px;
+            padding: 8px 12px;
+            overflow-x: auto;
+        }
+
+        .input-area pre {
+            margin: 0;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            line-height: 1.4;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* Output area */
+        .output-area {
+            margin-top: 0;
+        }
+
+        .output-wrapper {
+            display: flex;
+            flex-direction: row;
+            margin-top: 4px;
+        }
+
+        .output-content {
+            flex: 1;
+            min-width: 0;
+            padding: 8px 0;
+        }
+
+        .output-content pre {
+            margin: 0;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            line-height: 1.4;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* Stream output (stdout/stderr) */
+        .output-stream {
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            line-height: 1.4;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .output-stderr {
+            background-color: #fdd;
+            padding: 8px 12px;
+            border-radius: 2px;
+        }
+
+        /* Execute result / display data */
+        .output-result {
+            padding: 4px 0;
+        }
+
+        .output-result pre {
+            margin: 0;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+        }
+
+        /* Image output */
+        .output-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* HTML output (DataFrames, etc.) */
+        .output-html {
+            overflow-x: auto;
+        }
+
+        .output-html table {
+            border-collapse: collapse;
+            font-size: 13px;
+            font-family: var(--jp-content-font-family);
+        }
+
+        .output-html table th,
+        .output-html table td {
+            border: 1px solid #ddd;
+            padding: 6px 10px;
+            text-align: left;
+        }
+
+        .output-html table th {
+            background-color: #f5f5f5;
+            font-weight: 600;
+        }
+
+        .output-html table tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+
+        /* Error output */
+        .output-error {
+            background-color: #fff0f0;
+            padding: 8px 12px;
+            border-radius: 2px;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            white-space: pre-wrap;
+        }
+
+        /* Markdown cell styling */
+        .markdown-cell {
+            padding: 10px 0;
+        }
+
+        .markdown-cell h1 {
+            font-size: 2em;
+            font-weight: 600;
+            margin: 0.67em 0;
+            padding-bottom: 0.3em;
+            border-bottom: 1px solid var(--jp-border-color1);
+        }
+
+        .markdown-cell h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            margin: 0.83em 0;
+            padding-bottom: 0.3em;
+            border-bottom: 1px solid var(--jp-border-color1);
+        }
+
+        .markdown-cell h3 {
+            font-size: 1.25em;
+            font-weight: 600;
+            margin: 1em 0;
+        }
+
+        .markdown-cell h4 {
+            font-size: 1em;
+            font-weight: 600;
+            margin: 1.33em 0;
+        }
+
+        .markdown-cell h5 {
+            font-size: 0.875em;
+            font-weight: 600;
+            margin: 1.67em 0;
+        }
+
+        .markdown-cell h6 {
+            font-size: 0.85em;
+            font-weight: 600;
+            margin: 2.33em 0;
+            color: #6a737d;
+        }
+
+        .markdown-cell p {
+            margin: 0 0 16px 0;
+            line-height: 1.6;
+        }
+
+        .markdown-cell code {
+            font-family: var(--jp-code-font-family);
+            font-size: 85%;
+            background-color: rgba(27, 31, 35, 0.05);
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+        }
+
+        .markdown-cell pre {
+            background-color: var(--jp-cell-input-bg);
+            border: 1px solid var(--jp-border-color1);
+            border-radius: 3px;
+            padding: 16px;
+            overflow-x: auto;
+            font-size: 85%;
+            line-height: 1.45;
+        }
+
+        .markdown-cell pre code {
+            background-color: transparent;
+            padding: 0;
+            border-radius: 0;
+            font-size: 100%;
+        }
+
+        .markdown-cell blockquote {
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+            color: #6a737d;
+            border-left: 4px solid #dfe2e5;
+        }
+
+        .markdown-cell ul,
+        .markdown-cell ol {
+            margin: 0 0 16px 0;
+            padding-left: 2em;
+        }
+
+        .markdown-cell li {
+            margin: 0.25em 0;
+        }
+
+        .markdown-cell a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+
+        .markdown-cell a:hover {
+            text-decoration: underline;
+        }
+
+        .markdown-cell hr {
+            border: 0;
+            border-top: 1px solid var(--jp-border-color1);
+            margin: 24px 0;
+        }
+
+        .markdown-cell img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .markdown-cell table {
+            border-collapse: collapse;
+            margin: 0 0 16px 0;
+        }
+
+        .markdown-cell table th,
+        .markdown-cell table td {
+            border: 1px solid #dfe2e5;
+            padding: 6px 13px;
+        }
+
+        .markdown-cell table th {
+            font-weight: 600;
+            background-color: #f6f8fa;
+        }
+
+        .markdown-cell table tr:nth-child(2n) {
+            background-color: #f6f8fa;
+        }
+
+        /* Raw cell styling */
+        .raw-cell {
+            background-color: var(--jp-layout-color1);
+            border: 1px solid var(--jp-border-color1);
+            border-radius: 2px;
+            padding: 8px 12px;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            white-space: pre-wrap;
+        }
+
+        /* Empty prompt placeholder */
+        .prompt-empty {
+            color: transparent;
+        }
+
+        .export-footer {
+            margin-top: 32px;
+            padding-top: 16px;
+            border-top: 1px solid var(--jp-border-color1);
+            color: #555;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .export-footer a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+
+        .export-footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="notebook-container">
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [1]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>import os, re
+import numpy as np
+import pandas as pd
+from PIL import Image
+from tqdm import tqdm
+
+import torch
+import timm
+import open_clip
+
+from sklearn.model_selection import GroupShuffleSplit
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import (
+    roc_auc_score, accuracy_score, precision_score, recall_score, f1_score,
+    confusion_matrix, classification_report
+)
+
+SEED = 42
+np.random.seed(SEED)
+torch.manual_seed(SEED)
+
+ROOT = r"C:\Users\khush\OneDrive\Desktop\thesisnew\dataset\cbis"
+CSV_PATH = os.path.join(ROOT, "csv", "meta_with_roi.csv")
+
+print("CSV exists:", os.path.exists(CSV_PATH))
+</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream output-stderr">c:\Users\khush\OneDrive\Desktop\thesisnew\.venv\lib\site-packages\tqdm\auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
+  from .autonotebook import tqdm as notebook_tqdm
+</div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">CSV exists: True
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [2]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>df = pd.read_csv(CSV_PATH)
+print("Shape:", df.shape)
+print("Columns:", df.columns.tolist())
+
+# Required columns
+need = ["patient_id", "pathology", "png_path"]
+missing = [c for c in need if c not in df.columns]
+print("Missing required columns:", missing)
+
+df[["patient_id", "pathology", "png_path"]].head()
+</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Shape: (1499, 25)
+Columns: ['patient_id', 'breast_density', 'laterality', 'view', 'abnormality id', 'abnormality type', 'calc type', 'calc distribution', 'assessment', 'pathology', 'subtlety', 'image_file_path', 'cropped image file path', 'roi_mask_file_path', 'case_type', 'label', 'split', 'mass shape', 'mass margins', 'png_path', 'mask_png_path', 'bbox_xmin', 'bbox_ymin', 'bbox_xmax', 'bbox_ymax']
+Missing required columns: []
+</div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt">Out[2]:</div>
+                        <div class="output-content">
+                            <div class="output-html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>patient_id</th>
+      <th>pathology</th>
+      <th>png_path</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>P_00005</td>
+      <td>MALIGNANT</td>
+      <td>C:\Users\khush\OneDrive\Desktop\thesisnew\data...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>P_00005</td>
+      <td>MALIGNANT</td>
+      <td>C:\Users\khush\OneDrive\Desktop\thesisnew\data...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>P_00007</td>
+      <td>BENIGN</td>
+      <td>C:\Users\khush\OneDrive\Desktop\thesisnew\data...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>P_00007</td>
+      <td>BENIGN</td>
+      <td>C:\Users\khush\OneDrive\Desktop\thesisnew\data...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>P_00008</td>
+      <td>BENIGN_WITHOUT_CALLBACK</td>
+      <td>C:\Users\khush\OneDrive\Desktop\thesisnew\data...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [3]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>def pathology_to_label(x):
+    s = str(x).lower()
+    if "malignant" in s:
+        return 1
+    if "benign" in s:
+        return 0
+    return np.nan
+
+df = df.copy()
+df["label_bin"] = df["pathology"].apply(pathology_to_label)
+df = df.dropna(subset=["label_bin"]).copy()
+df["label_bin"] = df["label_bin"].astype(int)
+
+# ✅ Use png_path as the final image column (this is the important fix)
+df["img_full"] = df["png_path"].astype(str)
+
+print("Label counts:\n", df["label_bin"].value_counts())
+print("Missing img_full:", df["img_full"].isna().sum(), "/", len(df))
+print("Exists check (first 5):", [os.path.exists(p) for p in df["img_full"].head(5)])
+df[["patient_id", "pathology", "label_bin", "img_full"]].head()
+</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Label counts:
+ label_bin
+0    995
+1    504
+Name: count, dtype: int64
+Missing img_full: 0 / 1499
+Exists check (first 5): [True, True, True, True, True]
+</div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt">Out[3]:</div>
+                        <div class="output-content">
+                            <div class="output-html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>patient_id</th>
+      <th>pathology</th>
+      <th>label_bin</th>
+      <th>img_full</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>P_00005</td>
+      <td>MALIGNANT</td>
+      <td>1</td>
+      <td>C:\Users\khush\OneDrive\Desktop\thesisnew\data...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>P_00005</td>
+      <td>MALIGNANT</td>
+      <td>1</td>
+      <td>C:\Users\khush\OneDrive\Desktop\thesisnew\data...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>P_00007</td>
+      <td>BENIGN</td>
+      <td>0</td>
+      <td>C:\Users\khush\OneDrive\Desktop\thesisnew\data...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>P_00007</td>
+      <td>BENIGN</td>
+      <td>0</td>
+      <td>C:\Users\khush\OneDrive\Desktop\thesisnew\data...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>P_00008</td>
+      <td>BENIGN_WITHOUT_CALLBACK</td>
+      <td>0</td>
+      <td>C:\Users\khush\OneDrive\Desktop\thesisnew\data...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [4]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>gss1 = GroupShuffleSplit(n_splits=1, train_size=0.8, random_state=SEED)
+train_idx, temp_idx = next(gss1.split(df, df["label_bin"], groups=df["patient_id"]))
+
+df_train = df.iloc[train_idx].reset_index(drop=True)
+df_temp  = df.iloc[temp_idx].reset_index(drop=True)
+
+gss2 = GroupShuffleSplit(n_splits=1, train_size=0.5, random_state=SEED)
+val_idx, test_idx = next(gss2.split(df_temp, df_temp["label_bin"], groups=df_temp["patient_id"]))
+
+df_val  = df_temp.iloc[val_idx].reset_index(drop=True)
+df_test = df_temp.iloc[test_idx].reset_index(drop=True)
+
+print("Rows:", len(df_train), len(df_val), len(df_test))
+print("Patients:", df_train.patient_id.nunique(), df_val.patient_id.nunique(), df_test.patient_id.nunique())
+
+train_p = set(df_train["patient_id"])
+val_p   = set(df_val["patient_id"])
+test_p  = set(df_test["patient_id"])
+
+print("Leak train∩val:", len(train_p &amp; val_p))
+print("Leak train∩test:", len(train_p &amp; test_p))
+print("Leak val∩test:", len(val_p &amp; test_p))
+</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Rows: 1205 150 144
+Patients: 462 58 58
+Leak train∩val: 0
+Leak train∩test: 0
+Leak val∩test: 0
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>device = "cuda" if torch.cuda.is_available() else "cpu"
+print("Device:", device)
+
+BATCH = 8  # CPU-safe; if GPU you can set 16/32
+
+# --- helpers ---
+def load_rgb(path):
+    img = Image.open(path)
+    if img.mode != "RGB":
+        img = img.convert("RGB")
+    return img
+
+@torch.no_grad()
+def extract_timm_feats(df_part, model, tfm, batch=BATCH):
+    model.eval()
+    paths = df_part["img_full"].tolist()
+    feats = []
+
+    for i in tqdm(range(0, len(paths), batch), desc="timm-feats"):
+        batch_paths = paths[i:i+batch]
+        x = torch.stack([tfm(load_rgb(p)) for p in batch_paths]).to(device)
+        f = model(x).detach().cpu().numpy()
+        feats.append(f)
+
+    return np.vstack(feats)
+
+@torch.no_grad()
+def extract_clip_feats(df_part, clip_model, clip_preprocess, batch=BATCH):
+    clip_model.eval()
+    paths = df_part["img_full"].tolist()
+    feats = []
+
+    for i in tqdm(range(0, len(paths), batch), desc="clip-feats"):
+        batch_paths = paths[i:i+batch]
+        x = torch.stack([clip_preprocess(load_rgb(p)) for p in batch_paths]).to(device)
+        f = clip_model.encode_image(x)
+        f = f / f.norm(dim=-1, keepdim=True)
+        feats.append(f.detach().cpu().numpy())
+
+    return np.vstack(feats)
+
+# --- CNN (EfficientNet-B0 features) ---
+cnn = timm.create_model("tf_efficientnet_b3", pretrained=True, num_classes=0).to(device)
+cnn_cfg = timm.data.resolve_model_data_config(cnn)
+cnn_tfm = timm.data.create_transform(**cnn_cfg, is_training=False)
+
+# --- ViT features ---
+vit = timm.create_model("vit_base_patch16_224", pretrained=True, num_classes=0).to(device)
+vit_cfg = timm.data.resolve_model_data_config(vit)
+vit_tfm = timm.data.create_transform(**vit_cfg, is_training=False)
+
+# --- CLIP features ---
+clip_model, _, clip_preprocess = open_clip.create_model_and_transforms("ViT-B-16", pretrained="openai")
+clip_model = clip_model.to(device)
+
+# Extract
+Xtr_cnn  = extract_timm_feats(df_train, cnn, cnn_tfm)
+Xva_cnn  = extract_timm_feats(df_val,   cnn, cnn_tfm)
+Xte_cnn  = extract_timm_feats(df_test,  cnn, cnn_tfm)
+
+Xtr_vit  = extract_timm_feats(df_train, vit, vit_tfm)
+Xva_vit  = extract_timm_feats(df_val,   vit, vit_tfm)
+Xte_vit  = extract_timm_feats(df_test,  vit, vit_tfm)
+
+Xtr_clip = extract_clip_feats(df_train, clip_model, clip_preprocess)
+Xva_clip = extract_clip_feats(df_val,   clip_model, clip_preprocess)
+Xte_clip = extract_clip_feats(df_test,  clip_model, clip_preprocess)
+
+ytr = df_train["label_bin"].to_numpy()
+yva = df_val["label_bin"].to_numpy()
+yte = df_test["label_bin"].to_numpy()
+
+print("Shapes:")
+print("CNN :", Xtr_cnn.shape, Xva_cnn.shape, Xte_cnn.shape)
+print("ViT :", Xtr_vit.shape, Xva_vit.shape, Xte_vit.shape)
+print("CLIP:", Xtr_clip.shape, Xva_clip.shape, Xte_clip.shape)
+</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Device: cpu
+</div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream output-stderr">Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+c:\Users\khush\OneDrive\Desktop\thesisnew\.venv\lib\site-packages\open_clip\factory.py:450: UserWarning: QuickGELU mismatch between final model config (quick_gelu=False) and pretrained tag 'openai' (quick_gelu=True).
+  warnings.warn(
+timm-feats:  30%|██▉       | 45/151 [05:40&lt;13:21,  7.56s/it]
+</div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-error">---------------------------------------------------------------------------
+MemoryError                               Traceback (most recent call last)
+Cell In[5], line 57
+     54 clip_model = clip_model.to(device)
+     56 # Extract
+---&gt; 57 Xtr_cnn  = extract_timm_feats(df_train, cnn, cnn_tfm)
+     58 Xva_cnn  = extract_timm_feats(df_val,   cnn, cnn_tfm)
+     59 Xte_cnn  = extract_timm_feats(df_test,  cnn, cnn_tfm)
+
+File c:\Users\khush\OneDrive\Desktop\thesisnew\.venv\lib\site-packages\torch\utils\_contextlib.py:124, in context_decorator.&lt;locals&gt;.decorate_context(*args, **kwargs)
+    120 @functools.wraps(func)
+    121 def decorate_context(*args, **kwargs):
+    122     # pyrefly: ignore [bad-context-manager]
+    123     with ctx_factory():
+--&gt; 124         return func(*args, **kwargs)
+
+Cell In[5], line 21, in extract_timm_feats(df_part, model, tfm, batch)
+     19 for i in tqdm(range(0, len(paths), batch), desc="timm-feats"):
+     20     batch_paths = paths[i:i+batch]
+---&gt; 21     x = torch.stack([tfm(load_rgb(p)) for p in batch_paths]).to(device)
+     22     f = model(x).detach().cpu().numpy()
+     23     feats.append(f)
+
+Cell In[5], line 21, in &lt;listcomp&gt;(.0)
+     19 for i in tqdm(range(0, len(paths), batch), desc="timm-feats"):
+     20     batch_paths = paths[i:i+batch]
+---&gt; 21     x = torch.stack([tfm(load_rgb(p)) for p in batch_paths]).to(device)
+     22     f = model(x).detach().cpu().numpy()
+     23     feats.append(f)
+
+Cell In[5], line 10, in load_rgb(path)
+      8 img = Image.open(path)
+      9 if img.mode != "RGB":
+---&gt; 10     img = img.convert("RGB")
+     11 return img
+
+File c:\Users\khush\OneDrive\Desktop\thesisnew\.venv\lib\site-packages\PIL\Image.py:1132, in Image.convert(self, mode, matrix, dither, palette, colors)
+   1129     dither = Dither.FLOYDSTEINBERG
+   1131 try:
+-&gt; 1132     im = self.im.convert(mode, dither)
+   1133 except ValueError:
+   1134     try:
+   1135         # normalize source image and try again
+
+MemoryError: </div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-error">The Kernel crashed while executing code in the current cell or a previous cell. 
+
+Please review the code in the cell(s) to identify a possible cause of the failure. 
+
+Click &lt;a href='https://aka.ms/vscodeJupyterKernelCrash'&gt;here&lt;/a&gt; for more info. 
+
+View Jupyter &lt;a href='command:jupyter.viewOutput'&gt;log&lt;/a&gt; for further details.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>from sklearn.preprocessing import StandardScaler
+
+scaler = StandardScaler()
+
+Xtr = scaler.fit_transform(Xtr)
+Xva = scaler.transform(Xva)
+Xte = scaler.transform(Xte)
+</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>from sklearn.decomposition import PCA
+
+pca = PCA(n_components=0.95, random_state=SEED)
+
+Xtr = pca.fit_transform(Xtr)
+Xva = pca.transform(Xva)
+Xte = pca.transform(Xte)
+
+print("After PCA:", Xtr.shape)
+</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Concatenate features
+Xtr = np.concatenate([Xtr_cnn, Xtr_vit, Xtr_clip], axis=1)
+Xva = np.concatenate([Xva_cnn, Xva_vit, Xva_clip], axis=1)
+Xte = np.concatenate([Xte_cnn, Xte_vit, Xte_clip], axis=1)
+
+print("Concat shapes:", Xtr.shape, Xva.shape, Xte.shape)
+
+rf = RandomForestClassifier(
+    n_estimators=2500,
+    max_depth=None,
+    min_samples_leaf=1,
+    class_weight="balanced",
+    n_jobs=-1,
+    random_state=SEED
+)
+
+rf.fit(Xtr, ytr)
+
+# --- pick threshold on VAL by max Youden J (sens + spec - 1) ---
+pva = rf.predict_proba(Xva)[:, 1]
+
+ths = np.linspace(0.05, 0.95, 91)
+best = None
+
+for t in ths:
+    pred = (pva &gt;= t).astype(int)
+    cm = confusion_matrix(yva, pred, labels=[0,1])
+    tn, fp, fn, tp = cm.ravel()
+    sens = tp / (tp + fn + 1e-12)
+    spec = tn / (tn + fp + 1e-12)
+    j = sens + spec - 1
+    if best is None or j &gt; best["j"]:
+        best = {"t": float(t), "sens": float(sens), "spec": float(spec), "j": float(j)}
+
+print("Best threshold (VAL):", best)
+
+def eval_at(name, X, y, thr):
+    prob = rf.predict_proba(X)[:, 1]
+    pred = (prob &gt;= thr).astype(int)
+    cm = confusion_matrix(y, pred, labels=[0,1])
+    tn, fp, fn, tp = cm.ravel()
+    sens = tp / (tp + fn + 1e-12)
+    spec = tn / (tn + fp + 1e-12)
+
+    print(f"\n== {name} @ thr={thr:.2f} ==")
+    print("AUC :", roc_auc_score(y, prob))
+    print("ACC :", accuracy_score(y, pred))
+    print("PREC:", precision_score(y, pred, zero_division=0))
+    print("REC :", recall_score(y, pred, zero_division=0), "(Sensitivity)")
+    print("SPEC:", spec)
+    print("F1  :", f1_score(y, pred, zero_division=0))
+    print("CM:\n", cm)
+    print("\nReport:\n", classification_report(y, pred, digits=4))
+
+eval_at("VAL",  Xva, yva, best["t"])
+eval_at("TEST", Xte, yte, best["t"])
+</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>from sklearn.metrics import (
+    confusion_matrix, roc_auc_score, accuracy_score,
+    precision_score, recall_score, f1_score, balanced_accuracy_score
+)
+
+def eval_at(name, X, y, thr):
+    prob = rf.predict_proba(X)[:, 1]
+    pred = (prob &gt;= thr).astype(int)
+
+    cm = confusion_matrix(y, pred, labels=[0, 1])
+    tn, fp, fn, tp = cm.ravel()
+
+    # Core screening metrics
+    sensitivity = tp / (tp + fn + 1e-12)   # TPR, Recall for malignant (class 1)
+    specificity = tn / (tn + fp + 1e-12)   # TNR, Recall for benign (class 0)
+
+    # Extra helpful medical metrics
+    ppv = tp / (tp + fp + 1e-12)           # Positive Predictive Value (Precision)
+    npv = tn / (tn + fn + 1e-12)           # Negative Predictive Value
+
+    auc  = roc_auc_score(y, prob)
+    acc  = accuracy_score(y, pred)
+    bacc = balanced_accuracy_score(y, pred)
+    f1   = f1_score(y, pred, zero_division=0)
+
+    print(f"\n== {name} @ thr={thr:.2f} ==")
+    print(f"AUC        : {auc:.4f}")
+    print(f"Accuracy   : {acc:.4f}")
+    print(f"Bal-Acc    : {bacc:.4f}")
+    print(f"Sensitivity: {sensitivity:.4f}  (TPR, malignant recall)")
+    print(f"Specificity: {specificity:.4f}  (TNR, benign recall)")
+    print(f"PPV (Prec) : {ppv:.4f}")
+    print(f"NPV        : {npv:.4f}")
+    print(f"F1         : {f1:.4f}")
+    print("Confusion Matrix [ [TN FP] [FN TP] ]:")
+    print(cm)
+
+# Use your best threshold
+eval_at("VAL",  Xva, yva, best["t"])
+eval_at("TEST", Xte, yte, best["t"])
+</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># ✅ CELL 7 — Side-by-side evaluation plots (publication friendly)
+
+import matplotlib.pyplot as plt
+from sklearn.metrics import (
+    roc_curve, auc,
+    precision_recall_curve, average_precision_score,
+    confusion_matrix, ConfusionMatrixDisplay
+)
+
+thr = best["t"]
+
+
+def plot_all(name, X, y, thr):
+
+    prob = rf.predict_proba(X)[:, 1]
+    pred = (prob &gt;= thr).astype(int)
+
+    fpr, tpr, _ = roc_curve(y, prob)
+    roc_auc = auc(fpr, tpr)
+
+    prec, rec, _ = precision_recall_curve(y, prob)
+    ap = average_precision_score(y, prob)
+
+    cm = confusion_matrix(y, pred, labels=[0, 1])
+
+    # 🔥 4 plots side-by-side
+    fig, axes = plt.subplots(1, 4, figsize=(22, 5))
+
+    # --- ROC ---
+    axes[0].plot(fpr, tpr)
+    axes[0].plot([0, 1], [0, 1], linestyle="--")
+    axes[0].set_title(f"{name} ROC\nAUC={roc_auc:.3f}")
+    axes[0].set_xlabel("FPR")
+    axes[0].set_ylabel("TPR")
+
+    # --- PR ---
+    axes[1].plot(rec, prec)
+    axes[1].set_title(f"{name} PR\nAP={ap:.3f}")
+    axes[1].set_xlabel("Recall")
+    axes[1].set_ylabel("Precision")
+
+    # --- Confusion matrix ---
+    disp = ConfusionMatrixDisplay(cm, display_labels=["Benign", "Malignant"])
+    disp.plot(ax=axes[2], values_format="d", colorbar=False)
+    axes[2].set_title("Confusion Matrix")
+
+    # --- Probability histogram ---
+    axes[3].hist(prob[y == 0], bins=25, alpha=0.7, label="Benign")
+    axes[3].hist(prob[y == 1], bins=25, alpha=0.7, label="Malignant")
+    axes[3].axvline(thr, linestyle="--")
+    axes[3].set_title("Score Distribution")
+    axes[3].legend()
+
+    plt.tight_layout()
+    plt.show()
+
+
+# Run
+plot_all("VAL", Xva, yva, thr)
+plot_all("TEST", Xte, yte, thr)
+
+</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>import numpy as np
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import (
+    confusion_matrix, roc_auc_score, accuracy_score,
+    precision_score, recall_score, f1_score, classification_report
+)
+
+# 1) Concatenate features
+Xtr = np.concatenate([Xtr_cnn, Xtr_vit, Xtr_clip], axis=1)
+Xva = np.concatenate([Xva_cnn, Xva_vit, Xva_clip], axis=1)
+Xte = np.concatenate([Xte_cnn, Xte_vit, Xte_clip], axis=1)
+print("Concat shapes:", Xtr.shape, Xva.shape, Xte.shape)
+
+# 2) Train RF (same as you want)
+rf = RandomForestClassifier(
+    n_estimators=2500,
+    max_depth=None,
+    min_samples_leaf=1,
+    class_weight="balanced",
+    n_jobs=-1,
+    random_state=SEED
+)
+rf.fit(Xtr, ytr)
+
+# 3) Pick threshold on VAL to INCREASE sensitivity
+pva = rf.predict_proba(Xva)[:, 1]
+ths = np.linspace(0.05, 0.95, 181)
+
+target_sens = 0.70  # try 0.70 first, then 0.75
+best = None
+
+for t in ths:
+    pred = (pva &gt;= t).astype(int)
+    tn, fp, fn, tp = confusion_matrix(yva, pred, labels=[0,1]).ravel()
+    sens = tp / (tp + fn + 1e-12)
+    spec = tn / (tn + fp + 1e-12)
+
+    # Only consider thresholds that meet target sensitivity
+    if sens &gt;= target_sens:
+        # among them choose the one with max specificity (controls FP)
+        if best is None or spec &gt; best["spec"]:
+            best = {"t": float(t), "sens": float(sens), "spec": float(spec), "fp": int(fp), "fn": int(fn)}
+
+if best is None:
+    print(f"No threshold meets target_sens={target_sens:.2f} on VAL.")
+    print("Try target_sens = 0.65 or 0.60")
+    best = {"t": 0.41}  # fallback to your old value
+else:
+    print("Chosen threshold for higher sensitivity (VAL):", best)
+
+# 4) Evaluation function
+def eval_at(name, X, y, thr):
+    prob = rf.predict_proba(X)[:, 1]
+    pred = (prob &gt;= thr).astype(int)
+    cm = confusion_matrix(y, pred, labels=[0,1])
+    tn, fp, fn, tp = cm.ravel()
+    sens = tp / (tp + fn + 1e-12)
+    spec = tn / (tn + fp + 1e-12)
+
+    print(f"\n== {name} @ thr={thr:.2f} ==")
+    print("AUC :", roc_auc_score(y, prob))
+    print("ACC :", accuracy_score(y, pred))
+    print("PREC:", precision_score(y, pred, zero_division=0))
+    print("SENS:", sens, "(Sensitivity)")
+    print("SPEC:", spec)
+    print("F1  :", f1_score(y, pred, zero_division=0))
+    print("Confusion Matrix [ [TN FP] [FN TP] ]:\n", cm)
+    print("\nReport:\n", classification_report(y, pred, digits=4))
+
+thr = best["t"]
+eval_at("VAL",  Xva, yva, thr)
+eval_at("TEST", Xte, yte, thr)
+</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>import os, random, numpy as np, pandas as pd
+import torch
+import torch.nn as nn
+from torch.utils.data import Dataset, DataLoader
+from torchvision import transforms
+from PIL import Image
+
+SEED = 42
+random.seed(SEED); np.random.seed(SEED); torch.manual_seed(SEED)
+
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+print("Device:", device)
+</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>from sklearn.model_selection import GroupShuffleSplit
+
+df_all = df.copy()   # your full dataframe
+
+IMG_COL = "img_full"     # ← your image path column (from earlier steps)
+Y_COL   = "label"
+PID_COL = "patient_id"
+
+print("Total rows:", len(df_all))
+
+# -------------------------
+# TEST split (20%)
+# -------------------------
+gss = GroupShuffleSplit(test_size=0.20, random_state=42)
+
+trainval_idx, test_idx = next(gss.split(df_all, groups=df_all[PID_COL]))
+
+trainval_df = df_all.iloc[trainval_idx].reset_index(drop=True)
+test_df     = df_all.iloc[test_idx].reset_index(drop=True)
+
+# -------------------------
+# VAL split (20% of remaining)
+# -------------------------
+gss2 = GroupShuffleSplit(test_size=0.20, random_state=42)
+
+train_idx, val_idx = next(gss2.split(trainval_df, groups=trainval_df[PID_COL]))
+
+train_df = trainval_df.iloc[train_idx].reset_index(drop=True)
+val_df   = trainval_df.iloc[val_idx].reset_index(drop=True)
+
+print("Train:", train_df.shape)
+print("Val  :", val_df.shape)
+print("Test :", test_df.shape)
+
+# sanity check (NO leakage)
+print("Overlap patients:",
+      set(train_df[PID_COL]) &amp; set(val_df[PID_COL]),
+      set(train_df[PID_COL]) &amp; set(test_df[PID_COL]),
+      set(val_df[PID_COL]) &amp; set(test_df[PID_COL]))
+</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>import os
+
+IMG_COL = "img_full"   # &lt;-- change if your image column name is different
+Y_COL   = "label"
+PID_COL = "patient_id"
+
+for name, d in [("train", train_df), ("val", val_df), ("test", test_df)]:
+    print("\n", name.upper(), d.shape)
+    print("missing IMG:", d[IMG_COL].isna().sum())
+    print("missing Y  :", d[Y_COL].isna().sum())
+    print("sample paths exist (10):", [os.path.exists(p) for p in d[IMG_COL].head(10)])
+    print("label counts:\n", d[Y_COL].value_counts())
+</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>import torch
+from torch.utils.data import Dataset, DataLoader
+from torchvision import transforms
+from PIL import Image
+
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+print("Device:", device)
+
+class ImgDataset(Dataset):
+    def __init__(self, df, img_col, y_col, tfm):
+        self.df = df.reset_index(drop=True)
+        self.img_col = img_col
+        self.y_col = y_col
+        self.tfm = tfm
+
+    def __len__(self):
+        return len(self.df)
+
+    def __getitem__(self, i):
+        p = self.df.loc[i, self.img_col]
+        y = int(self.df.loc[i, self.y_col])
+        img = Image.open(p).convert("RGB")
+        img = self.tfm(img)
+        return img, y
+
+tfm = transforms.Compose([
+    transforms.Resize((224,224)),
+    transforms.ToTensor(),
+    transforms.Normalize(mean=(0.5,0.5,0.5), std=(0.5,0.5,0.5)),
+])
+
+BATCH = 8
+train_loader = DataLoader(ImgDataset(train_df, IMG_COL, Y_COL, tfm), batch_size=BATCH, shuffle=False, num_workers=0)
+val_loader   = DataLoader(ImgDataset(val_df,   IMG_COL, Y_COL, tfm), batch_size=BATCH, shuffle=False, num_workers=0)
+test_loader  = DataLoader(ImgDataset(test_df,  IMG_COL, Y_COL, tfm), batch_size=BATCH, shuffle=False, num_workers=0)
+
+print("Loaders:", len(train_loader), len(val_loader), len(test_loader))
+</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>import torch.nn as nn
+from torchvision.models import resnet50, ResNet50_Weights
+
+class ResNet50Feat(nn.Module):
+    def __init__(self):
+        super().__init__()
+        m = resnet50(weights=ResNet50_Weights.IMAGENET1K_V2)
+        self.backbone = nn.Sequential(*list(m.children())[:-1])  # remove FC layer
+    def forward(self, x):
+        f = self.backbone(x)   # [B,2048,1,1]
+        return f.flatten(1)    # [B,2048]
+
+cnn = ResNet50Feat().to(device).eval()
+print("ResNet50 feature extractor ready ✅")
+</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>import numpy as np
+import torch
+
+@torch.no_grad()
+def extract_feats(model, loader, name="feats"):
+    X_list, y_list = [], []
+    for xb, yb in loader:
+        xb = xb.to(device)
+        f = model(xb).detach().cpu().numpy()
+        X_list.append(f)
+        y_list.append(yb.numpy())
+    X = np.concatenate(X_list, axis=0)
+    y = np.concatenate(y_list, axis=0)
+    print(f"{name}: X={X.shape} y={y.shape}")
+    return X, y
+
+Xtr_cnn, ytr = extract_feats(cnn, train_loader, "ResNet50 train")
+Xva_cnn, yva = extract_feats(cnn, val_loader,   "ResNet50 val")
+Xte_cnn, yte = extract_feats(cnn, test_loader,  "ResNet50 test")
+</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>!pip -q install timm
+import timm
+import torch
+import numpy as np
+
+vit = timm.create_model("vit_base_patch16_224", pretrained=True, num_classes=0).to(device).eval()
+print("ViT ready ✅")
+
+@torch.no_grad()
+def extract_feats(model, loader, name="feats"):
+    X_list, y_list = [], []
+    for xb, yb in loader:
+        xb = xb.to(device)
+        f = model(xb).detach().cpu().numpy()
+        X_list.append(f)
+        y_list.append(yb.numpy())
+    X = np.concatenate(X_list, axis=0)
+    y = np.concatenate(y_list, axis=0)
+    print(f"{name}: X={X.shape} y={y.shape}")
+    return X, y
+
+Xtr_vit, _ = extract_feats(vit, train_loader, "ViT train")
+Xva_vit, _ = extract_feats(vit, val_loader,   "ViT val")
+Xte_vit, _ = extract_feats(vit, test_loader,  "ViT test")
+</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>!pip -q install open_clip_torch
+import open_clip
+import torch
+import numpy as np
+from torch.utils.data import DataLoader
+
+clip_model, _, clip_pre = open_clip.create_model_and_transforms("ViT-B-32", pretrained="openai")
+clip_model = clip_model.to(device).eval()
+print("CLIP ready ✅")
+
+# CLIP uses its own preprocessing, so make CLIP loaders
+train_loader_clip = DataLoader(ImgDataset(train_df, IMG_COL, Y_COL, clip_pre), batch_size=BATCH, shuffle=False, num_workers=0)
+val_loader_clip   = DataLoader(ImgDataset(val_df,   IMG_COL, Y_COL, clip_pre), batch_size=BATCH, shuffle=False, num_workers=0)
+test_loader_clip  = DataLoader(ImgDataset(test_df,  IMG_COL, Y_COL, clip_pre), batch_size=BATCH, shuffle=False, num_workers=0)
+
+@torch.no_grad()
+def extract_clip(model, loader, name="clip"):
+    X_list, y_list = [], []
+    for xb, yb in loader:
+        xb = xb.to(device)
+        f = model.encode_image(xb)
+        f = f / (f.norm(dim=-1, keepdim=True) + 1e-12)  # normalize CLIP embedding
+        X_list.append(f.detach().cpu().numpy())
+        y_list.append(yb.numpy())
+    X = np.concatenate(X_list, axis=0)
+    y = np.concatenate(y_list, axis=0)
+    print(f"{name}: X={X.shape} y={y.shape}")
+    return X, y
+
+Xtr_clip, _ = extract_clip(clip_model, train_loader_clip, "CLIP train")
+Xva_clip, _ = extract_clip(clip_model, val_loader_clip,   "CLIP val")
+Xte_clip, _ = extract_clip(clip_model, test_loader_clip,  "CLIP test")
+</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>from sklearn.ensemble import RandomForestClassifier
+import numpy as np
+
+Xtr = np.concatenate([Xtr_cnn, Xtr_vit, Xtr_clip], axis=1)
+Xva = np.concatenate([Xva_cnn, Xva_vit, Xva_clip], axis=1)
+Xte = np.concatenate([Xte_cnn, Xte_vit, Xte_clip], axis=1)
+
+print("Concat shapes:", Xtr.shape, Xva.shape, Xte.shape)
+
+rf = RandomForestClassifier(
+    n_estimators=2500,
+    max_depth=None,
+    min_samples_leaf=1,
+    class_weight="balanced",
+    n_jobs=-1,
+    random_state=SEED
+)
+rf.fit(Xtr, ytr)
+print("RF trained ✅")
+</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># pick threshold on VAL with Sensitivity &gt;= 0.75 (then maximize Specificity)
+target_sens = 0.75
+
+pva = rf.predict_proba(Xva)[:, 1]
+ths = np.linspace(0.05, 0.95, 361)   # finer grid
+
+best = None
+for t in ths:
+    pred = (pva &gt;= t).astype(int)
+    tn, fp, fn, tp = confusion_matrix(yva, pred, labels=[0,1]).ravel()
+
+    sens = tp/(tp+fn+1e-12)
+    spec = tn/(tn+fp+1e-12)
+    j = sens + spec - 1
+
+    # ✅ keep only thresholds meeting sensitivity target
+    if sens &gt;= target_sens:
+        # pick one with best specificity (tie-breaker: higher Youden J)
+        if (best is None) or (spec &gt; best["spec"]) or (spec == best["spec"] and j &gt; best["j"]):
+            best = {"t": float(t), "sens": float(sens), "spec": float(spec), "j": float(j)}
+
+print("Chosen threshold (VAL) for Sens&gt;=0.75:", best)
+
+# fallback if model cannot reach target sensitivity
+if best is None:
+    print("❌ No threshold can reach Sens&gt;=0.75 on VAL. Falling back to max Youden J.")
+    best = None
+    for t in ths:
+        pred = (pva &gt;= t).astype(int)
+        tn, fp, fn, tp = confusion_matrix(yva, pred, labels=[0,1]).ravel()
+        sens = tp/(tp+fn+1e-12)
+        spec = tn/(tn+fp+1e-12)
+        j = sens + spec - 1
+        if best is None or j &gt; best["j"]:
+            best = {"t": float(t), "sens": float(sens), "spec": float(spec), "j": float(j)}
+    print("Fallback threshold (max Youden J):", best)
+
+thr = best["t"]
+print("Final threshold:", thr)
+</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>eval_and_plot("VAL",  Xva, yva, thr)
+eval_and_plot("TEST", Xte, yte, thr)
+</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>#0.32 take this 
+
+import numpy as np
+from sklearn.metrics import confusion_matrix
+
+target_sens = 0.80   # change to 0.90 if you want even higher
+
+pva = rf.predict_proba(Xva)[:, 1]
+ths = np.linspace(0.01, 0.99, 991)
+
+best = None
+for t in ths:
+    pred = (pva &gt;= t).astype(int)
+    tn, fp, fn, tp = confusion_matrix(yva, pred, labels=[0,1]).ravel()
+
+    sens = tp/(tp+fn+1e-12)
+    spec = tn/(tn+fp+1e-12)
+
+    # keep only thresholds meeting sensitivity target
+    if sens &gt;= target_sens:
+        # maximize specificity to avoid too many false positives
+        if best is None or spec &gt; best["spec"]:
+            best = {"t": float(t), "sens": float(sens), "spec": float(spec), "fp": int(fp), "fn": int(fn)}
+
+print("Chosen threshold for target sensitivity:", best)
+
+thr = best["t"]
+print("Final threshold:", thr)
+</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>eval_and_plot("VAL", Xva, yva, thr) 
+eval_and_plot("TEST", Xte, yte, thr)</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>import numpy as np
+import matplotlib.pyplot as plt
+
+from sklearn.metrics import (
+    confusion_matrix, roc_curve, auc,
+    precision_recall_curve, average_precision_score
+)
+from sklearn.calibration import calibration_curve
+
+def plot_side_by_side_results(model, Xva, yva, Xte, yte, thr=0.32, title="RF (Hybrid Features)"):
+    # probabilities
+    pva = model.predict_proba(Xva)[:, 1]
+    pte = model.predict_proba(Xte)[:, 1]
+
+    # predictions at threshold
+    pred_va = (pva &gt;= thr).astype(int)
+    pred_te = (pte &gt;= thr).astype(int)
+
+    # confusion matrices
+    cm_va = confusion_matrix(yva, pred_va, labels=[0, 1])
+    cm_te = confusion_matrix(yte, pred_te, labels=[0, 1])
+
+    cm_va_norm = cm_va / (cm_va.sum(axis=1, keepdims=True) + 1e-12)
+    cm_te_norm = cm_te / (cm_te.sum(axis=1, keepdims=True) + 1e-12)
+
+    # ROC
+    fpr_va, tpr_va, _ = roc_curve(yva, pva)
+    fpr_te, tpr_te, _ = roc_curve(yte, pte)
+    auc_va = auc(fpr_va, tpr_va)
+    auc_te = auc(fpr_te, tpr_te)
+
+    # PR
+    prec_va, rec_va, _ = precision_recall_curve(yva, pva)
+    prec_te, rec_te, _ = precision_recall_curve(yte, pte)
+    ap_va = average_precision_score(yva, pva)
+    ap_te = average_precision_score(yte, pte)
+
+    # Calibration (optional but good)
+    frac_pos_va, mean_pred_va = calibration_curve(yva, pva, n_bins=10, strategy="uniform")
+    frac_pos_te, mean_pred_te = calibration_curve(yte, pte, n_bins=10, strategy="uniform")
+
+    # -------------------- 1) Confusion Matrix (Counts) side by side --------------------
+    fig, axes = plt.subplots(1, 2, figsize=(12, 5))
+    for ax, cm, name in [(axes[0], cm_va, "VAL"), (axes[1], cm_te, "TEST")]:
+        im = ax.imshow(cm)
+        ax.set_title(f"{title} | {name} CM (counts) @ thr={thr:.2f}")
+        ax.set_xticks([0, 1]); ax.set_yticks([0, 1])
+        ax.set_xticklabels(["Benign(0)", "Malignant(1)"])
+        ax.set_yticklabels(["Benign(0)", "Malignant(1)"])
+        ax.set_xlabel("Predicted"); ax.set_ylabel("True")
+        for (i, j), v in np.ndenumerate(cm):
+            ax.text(j, i, str(v), ha="center", va="center")
+    plt.tight_layout()
+    plt.show()
+
+    # -------------------- 2) Confusion Matrix (Normalized) side by side --------------------
+    fig, axes = plt.subplots(1, 2, figsize=(12, 5))
+    for ax, cmn, name in [(axes[0], cm_va_norm, "VAL"), (axes[1], cm_te_norm, "TEST")]:
+        im = ax.imshow(cmn, vmin=0, vmax=1)
+        ax.set_title(f"{title} | {name} CM (normalized) @ thr={thr:.2f}")
+        ax.set_xticks([0, 1]); ax.set_yticks([0, 1])
+        ax.set_xticklabels(["Benign(0)", "Malignant(1)"])
+        ax.set_yticklabels(["Benign(0)", "Malignant(1)"])
+        ax.set_xlabel("Predicted"); ax.set_ylabel("True")
+        for (i, j), v in np.ndenumerate(cmn):
+            ax.text(j, i, f"{v:.2f}", ha="center", va="center")
+    plt.tight_layout()
+    plt.show()
+
+    # -------------------- 3) ROC Curves side by side --------------------
+    fig, axes = plt.subplots(1, 2, figsize=(12, 5))
+    axes[0].plot(fpr_va, tpr_va, label=f"AUC={auc_va:.4f}")
+    axes[0].plot([0, 1], [0, 1], linestyle="--")
+    axes[0].set_title(f"{title} | VAL ROC")
+    axes[0].set_xlabel("FPR (1 - Specificity)")
+    axes[0].set_ylabel("TPR (Sensitivity)")
+    axes[0].legend(loc="lower right")
+
+    axes[1].plot(fpr_te, tpr_te, label=f"AUC={auc_te:.4f}")
+    axes[1].plot([0, 1], [0, 1], linestyle="--")
+    axes[1].set_title(f"{title} | TEST ROC")
+    axes[1].set_xlabel("FPR (1 - Specificity)")
+    axes[1].set_ylabel("TPR (Sensitivity)")
+    axes[1].legend(loc="lower right")
+
+    plt.tight_layout()
+    plt.show()
+
+    # -------------------- 4) PR Curves side by side --------------------
+    fig, axes = plt.subplots(1, 2, figsize=(12, 5))
+    axes[0].plot(rec_va, prec_va, label=f"AP={ap_va:.4f}")
+    axes[0].set_title(f"{title} | VAL Precision–Recall")
+    axes[0].set_xlabel("Recall (Sensitivity)")
+    axes[0].set_ylabel("Precision (PPV)")
+    axes[0].legend(loc="lower left")
+
+    axes[1].plot(rec_te, prec_te, label=f"AP={ap_te:.4f}")
+    axes[1].set_title(f"{title} | TEST Precision–Recall")
+    axes[1].set_xlabel("Recall (Sensitivity)")
+    axes[1].set_ylabel("Precision (PPV)")
+    axes[1].legend(loc="lower left")
+
+    plt.tight_layout()
+    plt.show()
+
+    # -------------------- 5) Score distribution (VAL vs TEST) side by side --------------------
+    fig, axes = plt.subplots(1, 2, figsize=(12, 5))
+    for ax, probs, y, name in [(axes[0], pva, yva, "VAL"), (axes[1], pte, yte, "TEST")]:
+        ax.hist(probs[y == 0], bins=30, alpha=0.7, label="Benign(0)")
+        ax.hist(probs[y == 1], bins=30, alpha=0.7, label="Malignant(1)")
+        ax.axvline(thr, linestyle="--", label=f"thr={thr:.2f}")
+        ax.set_title(f"{title} | {name} Probabilities")
+        ax.set_xlabel("Predicted P(malignant)")
+        ax.set_ylabel("Count")
+        ax.legend()
+    plt.tight_layout()
+    plt.show()
+
+    # -------------------- 6) Calibration curve side by side --------------------
+    fig, axes = plt.subplots(1, 2, figsize=(12, 5))
+    axes[0].plot(mean_pred_va, frac_pos_va, marker="o", label="Model")
+    axes[0].plot([0, 1], [0, 1], linestyle="--", label="Perfect")
+    axes[0].set_title(f"{title} | VAL Calibration")
+    axes[0].set_xlabel("Mean predicted probability")
+    axes[0].set_ylabel("Fraction of positives")
+    axes[0].legend()
+
+    axes[1].plot(mean_pred_te, frac_pos_te, marker="o", label="Model")
+    axes[1].plot([0, 1], [0, 1], linestyle="--", label="Perfect")
+    axes[1].set_title(f"{title} | TEST Calibration")
+    axes[1].set_xlabel("Mean predicted probability")
+    axes[1].set_ylabel("Fraction of positives")
+    axes[1].legend()
+
+    plt.tight_layout()
+    plt.show()
+
+    # Return probabilities too (handy if you want more plots later)
+    return pva, pte
+
+
+# --------- USE IT ----------
+# If you want to force 0.32:
+thr = 0.32
+
+# Or if you used your sensitivity-target threshold:
+# thr = best["t"]
+
+pva, pte = plot_side_by_side_results(rf, Xva, yva, Xte, yte, thr=thr, title="Hybrid CNN+ViT+CLIP → RF")
+
+</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.metrics import (
+    confusion_matrix, ConfusionMatrixDisplay,
+    roc_auc_score, accuracy_score, balanced_accuracy_score,
+    precision_score, recall_score, f1_score, classification_report
+)
+
+# pick threshold by max Youden J on VAL
+pva = rf.predict_proba(Xva)[:, 1]
+ths = np.linspace(0.05, 0.95, 181)
+
+best = None
+for t in ths:
+    pred = (pva &gt;= t).astype(int)
+    tn, fp, fn, tp = confusion_matrix(yva, pred, labels=[0,1]).ravel()
+    sens = tp/(tp+fn+1e-12)
+    spec = tn/(tn+fp+1e-12)
+    j = sens + spec - 1
+    if best is None or j &gt; best["j"]:
+        best = {"t": float(t), "sens": float(sens), "spec": float(spec), "j": float(j)}
+
+print("Best threshold (VAL):", best)
+thr = best["t"]
+
+def eval_and_plot(name, X, y, thr):
+    prob = rf.predict_proba(X)[:, 1]
+    pred = (prob &gt;= thr).astype(int)
+
+    cm = confusion_matrix(y, pred, labels=[0,1])
+    tn, fp, fn, tp = cm.ravel()
+
+    sens = tp/(tp+fn+1e-12)
+    spec = tn/(tn+fp+1e-12)
+    ppv  = tp/(tp+fp+1e-12)
+    npv  = tn/(tn+fn+1e-12)
+
+    print(f"\n== {name} @ thr={thr:.2f} ==")
+    print("AUC        :", roc_auc_score(y, prob))
+    print("Accuracy   :", accuracy_score(y, pred))
+    print("Bal-Acc    :", balanced_accuracy_score(y, pred))
+    print("Sensitivity:", sens)
+    print("Specificity:", spec)
+    print("PPV (Prec) :", ppv)
+    print("NPV        :", npv)
+    print("F1         :", f1_score(y, pred, zero_division=0))
+    print("Confusion Matrix [ [TN FP] [FN TP] ]:\n", cm)
+    print("\nClassification Report:\n", classification_report(y, pred, digits=4))
+
+    # confusion matrix square box
+    disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=["Benign(0)", "Malignant(1)"])
+    plt.figure()
+    disp.plot(values_format="d")
+    plt.title(f"{name} Confusion Matrix (thr={thr:.2f})")
+    plt.show()
+
+eval_and_plot("VAL",  Xva, yva, thr)
+eval_and_plot("TEST", Xte, yte, thr)
+</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>from sklearn.metrics import (
+    confusion_matrix, roc_auc_score, accuracy_score,
+    balanced_accuracy_score, precision_score, recall_score,
+    f1_score, classification_report
+)
+import matplotlib.pyplot as plt
+from sklearn.metrics import ConfusionMatrixDisplay
+
+
+# =====================================================
+# 🔒 FINAL THRESHOLD (LOCKED)
+# =====================================================
+thr = 0.41
+print("FINAL threshold locked at:", thr)
+
+
+def evaluate(name, X, y):
+
+    prob = rf.predict_proba(X)[:, 1]
+    pred = (prob &gt;= thr).astype(int)
+
+    cm = confusion_matrix(y, pred, labels=[0,1])
+    tn, fp, fn, tp = cm.ravel()
+
+    sensitivity = tp/(tp+fn+1e-12)
+    specificity = tn/(tn+fp+1e-12)
+    ppv = tp/(tp+fp+1e-12)
+    npv = tn/(tn+fn+1e-12)
+
+    print("\n" + "="*60)
+    print(f"{name} RESULTS  (threshold = 0.41)")
+    print("="*60)
+
+    print("AUC        :", round(roc_auc_score(y, prob),4))
+    print("Accuracy   :", round(accuracy_score(y, pred),4))
+    print("Bal-Acc    :", round(balanced_accuracy_score(y, pred),4))
+    print("Sensitivity:", round(sensitivity,4), "(malignant recall)")
+    print("Specificity:", round(specificity,4), "(benign recall)")
+    print("PPV        :", round(ppv,4))
+    print("NPV        :", round(npv,4))
+    print("F1-score   :", round(f1_score(y, pred),4))
+
+    print("\nConfusion Matrix  [[TN FP] [FN TP]]")
+    print(cm)
+
+    print("\nClassification Report:\n")
+    print(classification_report(y, pred, digits=4))
+
+
+    # pretty confusion matrix
+    disp = ConfusionMatrixDisplay(cm, display_labels=["Benign(0)", "Malignant(1)"])
+    plt.figure()
+    disp.plot(values_format="d")
+    plt.title(f"{name} Confusion Matrix (thr=0.41)")
+    plt.show()
+
+
+# =====================================================
+# FINAL RESULTS
+# =====================================================
+evaluate("VALIDATION", Xva, yva)
+evaluate("TEST", Xte, yte)
+</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>import numpy as np
+from sklearn.metrics import confusion_matrix, accuracy_score
+
+target_sens = 0.70   # try 0.65, 0.70, 0.75
+
+pva = rf.predict_proba(Xva)[:, 1]
+ths = np.linspace(0.05, 0.95, 181)
+
+best = None
+for t in ths:
+    pred = (pva &gt;= t).astype(int)
+    tn, fp, fn, tp = confusion_matrix(yva, pred, labels=[0,1]).ravel()
+    sens = tp/(tp+fn+1e-12)
+    spec = tn/(tn+fp+1e-12)
+    acc  = accuracy_score(yva, pred)
+
+    # keep only thresholds that reach target sensitivity
+    if sens &gt;= target_sens:
+        # choose the one with the BEST specificity (or you can maximize accuracy)
+        if best is None or spec &gt; best["spec"]:
+            best = {"t": float(t), "sens": float(sens), "spec": float(spec), "acc": float(acc)}
+
+print("Best threshold reaching target sensitivity:", best)
+thr_sens = best["t"]
+print("Chosen thr:", thr_sens)
+</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>from sklearn.metrics import (
+    confusion_matrix, roc_auc_score, accuracy_score, balanced_accuracy_score,
+    f1_score, classification_report
+)
+
+def eval_fixed(name, X, y, thr):
+    prob = rf.predict_proba(X)[:, 1]
+    pred = (prob &gt;= thr).astype(int)
+    cm = confusion_matrix(y, pred, labels=[0,1])
+    tn, fp, fn, tp = cm.ravel()
+
+    sens = tp/(tp+fn+1e-12)
+    spec = tn/(tn+fp+1e-12)
+
+    print("\n" + "="*55)
+    print(f"{name} @ thr={thr:.2f}")
+    print("="*55)
+    print("AUC        :", round(roc_auc_score(y, prob),4))
+    print("Accuracy   :", round(accuracy_score(y, pred),4))
+    print("Bal-Acc    :", round(balanced_accuracy_score(y, pred),4))
+    print("Sensitivity:", round(sens,4))
+    print("Specificity:", round(spec,4))
+    print("FN:", fn, "FP:", fp)
+    print("Confusion Matrix [[TN FP] [FN TP]]:\n", cm)
+    print("\nReport:\n", classification_report(y, pred, digits=4))
+
+eval_fixed("VAL",  Xva, yva, thr_sens)
+eval_fixed("TEST", Xte, yte, thr_sens)
+</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>import numpy as np
+from sklearn.model_selection import StratifiedKFold
+from sklearn.ensemble import RandomForestClassifier
+
+SEED = 42
+
+# --- Base RF (same style as yours) ---
+def make_rf():
+    return RandomForestClassifier(
+        n_estimators=2500,
+        max_depth=None,
+        min_samples_leaf=1,
+        class_weight="balanced",
+        n_jobs=-1,
+        random_state=SEED
+    )
+
+# --- 5-fold OOF probabilities on TRAIN ---
+skf = StratifiedKFold(n_splits=5, shuffle=True, random_state=SEED)
+
+oof_tr = np.zeros(len(ytr), dtype=float)
+
+for fold, (idx_tr, idx_va) in enumerate(skf.split(Xtr, ytr), 1):
+    rf_fold = make_rf()
+    rf_fold.fit(Xtr[idx_tr], ytr[idx_tr])
+    oof_tr[idx_va] = rf_fold.predict_proba(Xtr[idx_va])[:, 1]
+    print(f"Fold {fold} done")
+
+# --- Train FINAL RF on full TRAIN (this one will be used on VAL/TEST) ---
+rf_final = make_rf()
+rf_final.fit(Xtr, ytr)
+
+print("OOF train prob range:", oof_tr.min(), "to", oof_tr.max())
+</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>from sklearn.metrics import confusion_matrix, accuracy_score
+
+target_sens = 0.75  # try 0.72, 0.75, 0.78 (don't jump to 0.90)
+
+pva = rf_final.predict_proba(Xva)[:, 1]
+ths = np.linspace(0.05, 0.95, 181)
+
+best = None
+for t in ths:
+    pred = (pva &gt;= t).astype(int)
+    tn, fp, fn, tp = confusion_matrix(yva, pred, labels=[0,1]).ravel()
+    sens = tp/(tp+fn+1e-12)
+    spec = tn/(tn+fp+1e-12)
+    acc  = accuracy_score(yva, pred)
+
+    # reach sensitivity target, then maximize specificity (keeps FP controlled)
+    if sens &gt;= target_sens:
+        if best is None or spec &gt; best["spec"]:
+            best = {"t": float(t), "sens": float(sens), "spec": float(spec), "acc": float(acc)}
+
+print("Chosen threshold (VAL):", best)
+thr = best["t"]
+</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>from sklearn.metrics import (
+    confusion_matrix, roc_auc_score, accuracy_score, balanced_accuracy_score,
+    f1_score, classification_report
+)
+
+def eval_fixed(name, X, y, thr):
+    prob = rf_final.predict_proba(X)[:, 1]
+    pred = (prob &gt;= thr).astype(int)
+    cm = confusion_matrix(y, pred, labels=[0,1])
+    tn, fp, fn, tp = cm.ravel()
+
+    sens = tp/(tp+fn+1e-12)
+    spec = tn/(tn+fp+1e-12)
+
+    print("\n" + "="*55)
+    print(f"{name} @ thr={thr:.2f}")
+    print("="*55)
+    print("AUC        :", round(roc_auc_score(y, prob),4))
+    print("Accuracy   :", round(accuracy_score(y, pred),4))
+    print("Bal-Acc    :", round(balanced_accuracy_score(y, pred),4))
+    print("Sensitivity:", round(sens,4))
+    print("Specificity:", round(spec,4))
+    print("FN:", fn, "FP:", fp)
+    print("Confusion Matrix [[TN FP] [FN TP]]:\n", cm)
+    print("\nReport:\n", classification_report(y, pred, digits=4))
+
+eval_fixed("VAL",  Xva, yva, thr)
+eval_fixed("TEST", Xte, yte, thr)
+</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>import numpy as np
+from sklearn.metrics import (
+    confusion_matrix, roc_auc_score, accuracy_score,
+    precision_score, recall_score, f1_score, classification_report
+)
+
+def pretty_eval(name, model, X, y, thr):
+    prob = model.predict_proba(X)[:, 1]
+    pred = (prob &gt;= thr).astype(int)
+
+    cm = confusion_matrix(y, pred, labels=[0, 1])
+    tn, fp, fn, tp = cm.ravel()
+
+    sens = tp / (tp + fn + 1e-12)  # sensitivity = recall for class 1
+    spec = tn / (tn + fp + 1e-12)  # specificity = recall for class 0
+
+    print(f"\n== {name} @ thr={thr:.2f} ==")
+    print("AUC :", roc_auc_score(y, prob))
+    print("ACC :", accuracy_score(y, pred))
+    print("PREC:", precision_score(y, pred, zero_division=0))
+    print("SENS:", sens, "(Sensitivity)")
+    print("SPEC:", spec)
+    print("F1  :", f1_score(y, pred, zero_division=0))
+    print("Confusion Matrix [ [TN FP] [FN TP] ]:\n", cm)
+    print("\nReport:\n", classification_report(y, pred, digits=4))
+
+
+# ✅ Set your final threshold here
+thr = 0.34   # change to 0.35 / 0.41 if you want
+
+pretty_eval("VAL",  rf, Xva, yva, thr)
+pretty_eval("TEST", rf, Xte, yte, thr)
+</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>from sklearn.metrics import confusion_matrix
+
+target_sens = 0.72  # set your target, e.g., 0.72 / 0.75 / 0.78
+
+pva = rf.predict_proba(Xva)[:, 1]
+ths = np.linspace(0.05, 0.95, 901)
+
+best = None
+for t in ths:
+    pred = (pva &gt;= t).astype(int)
+    tn, fp, fn, tp = confusion_matrix(yva, pred, labels=[0,1]).ravel()
+    sens = tp / (tp + fn + 1e-12)
+    spec = tn / (tn + fp + 1e-12)
+
+    if sens &gt;= target_sens:
+        if best is None or spec &gt; best["spec"]:
+            best = {"t": float(t), "sens": float(sens), "spec": float(spec), "fp": int(fp), "fn": int(fn)}
+
+print("Chosen threshold for higher sensitivity (VAL):", best)
+thr = best["t"]
+
+pretty_eval("VAL",  rf, Xva, yva, thr)
+pretty_eval("TEST", rf, Xte, yte, thr)
+</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre></pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre></pre></div>
+            </div>
+        </div>
+    </div>
+    <footer class="export-footer">
+        Exported with <a href="https://www.runcell.dev/tool/ipynb-to-html">runcell</a> — convert notebooks to HTML or PDF anytime at runcell.dev.
+    </footer>
+</body>
+</html>
